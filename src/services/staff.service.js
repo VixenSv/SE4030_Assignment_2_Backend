@@ -15,7 +15,7 @@ const addStaff = async (req, res) => {
     
           staff = new Staff(req.body);
           //hashing passowrd
-          staff.password = await bcrypt.hash(user.password, 8);
+          staff.password = await bcrypt.hash(staff.password, 8);
           await staff.save();  
           
  
@@ -47,7 +47,7 @@ const addStaff = async (req, res) => {
             responseHandler.respond(res, data);
           })
           .catch((error) => {
-            LOG.info("User Cannot Add");
+            LOG.info("Cannot Add Staff Member");
             responseHandler.handleError(res, error.message);
           });
       }
