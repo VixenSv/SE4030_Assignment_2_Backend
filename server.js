@@ -10,8 +10,8 @@ const fs = require('fs');
 const { Server } = require('http');
 
 const options ={
- // key: fs.readFileSync("./server.key"),
- // cert: fs.readFileSync("./server.crt"),
+ key: fs.readFileSync("./cert/key.pem"),
+ cert: fs.readFileSync("./cert/cert.pem"),
   passphrase: 'hello',
   requestCert: false,
   port: 8089,
@@ -38,10 +38,17 @@ mongoose.connect(MONGODB_URI, {
 mongoose.connection.once('open', () =>{
   console.log('Mongodb connected');
 });
+https.createServer(options,app, (req, res )=>{
+  res.writeHead(200, {});
+  res.end('Secure Software Development Assignment Backend')
 
-app.listen(PORT, () =>{
-      console.log(`Server running on ${PORT}`);
+}).listen(PORT, () =>{
+    console.log(`API is up and running on PORT ${PORT}`);
 });
+
+// app.listen(PORT, () =>{
+//       console.log(`Server running on ${PORT}`);
+// });
 
 app.route('/').get((req, res) => {
   res.send('Welcome to ANB backend');
