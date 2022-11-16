@@ -1,4 +1,4 @@
-const Staff = require('../models/staff.model');
+const Staff = require('../entities/staff.entity');
 const express = require("express");
 
  
@@ -39,15 +39,15 @@ const addStaff = async (req, res) => {
         })
           .then((data) => {
             if (data === "This User Already Exists") {
-              LOG.warn("This User Already Exists");
+           //   LOG.warn("This User Already Exists");
             } else {
-              LOG.info("Staff Successfully Created");
+          //    LOG.info("Staff Successfully Created");
             }
     
             responseHandler.respond(res, data);
           })
           .catch((error) => {
-            LOG.info("Cannot Add Staff Member");
+        //    LOG.info("Cannot Add Staff Member");
             responseHandler.handleError(res, error.message);
           });
       }
