@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const fileHandler = require("../services/file-handler.service");
+const userHandler = require("../services/user-handler.service");
 const authentication = require("../authenticator/authenticator");
 
 module.exports =   function () {
-  router.post("/upload", authentication, fileHandler.saveFile );
+  router.post("/save", userHandler.saveUser );
+  router.post("/login" , userHandler.loginUser );
   return router;
 };

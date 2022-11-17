@@ -5,7 +5,7 @@ const User = require ('../entities/staff.entity');
 module.exports = async function auth(req, res, next) {
   try {
     const TOKEN = req.header('Authorization').replace('Bearer ', '');
-    const DECODE = jwt.verify(TOKEN, 'ABC_CompanySecret');
+    const DECODE = jwt.verify(TOKEN, 'ABC_COMPANY_KEY');
     const user = await User.findOne({ _id: DECODE._id, token: TOKEN });
 
     if (!user) {
