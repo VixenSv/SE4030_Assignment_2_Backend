@@ -46,12 +46,8 @@ https.createServer(options,app, (req, res )=>{
     console.log(`API is up and running on PORT ${PORT}`);
 });
 
-// app.listen(PORT, () =>{
-//       console.log(`Server running on ${PORT}`);
-// });
-
 app.route('/').get((req, res) => {
-  res.send('Welcome to ANB backend');
+  res.send('Welcome to ABC backend');
   
 })
 
